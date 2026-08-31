@@ -10,7 +10,15 @@ import {
 const app = express();
 
 // Allow our React frontend to talk to this backend
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:5175",
+  "http://localhost:3000",
+  process.env.CLIENT_URL
+].filter(Boolean);
+
+app.use(cors({ origin: allowedOrigins }));
 
 // Convert incoming JSON requests to JavaScript objects
 app.use(express.json());
