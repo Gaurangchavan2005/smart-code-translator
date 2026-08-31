@@ -54,8 +54,9 @@ function LoginPage() {
       login(result.token, result.user);
       toast.success(`Welcome, ${result.user.name}!`);
       navigate('/');
-    } catch {
-      toast.error('Login failed. Please try again.');
+    } catch (err) {
+      console.error('Google login error:', err);
+      toast.error(err.response?.data?.message || err.message || 'Login failed. Please try again.');
     }
   };
 
