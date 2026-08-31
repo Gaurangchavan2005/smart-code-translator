@@ -15,7 +15,8 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://localhost:5175",
   "http://localhost:3000",
-  process.env.CLIENT_URL
+  process.env.CLIENT_URL,
+  "https://smart-code-translator.vercel.app", // Production Vercel
 ].filter(Boolean);
 
 app.use(cors({ origin: allowedOrigins }));
